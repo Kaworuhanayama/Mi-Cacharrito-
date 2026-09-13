@@ -1,0 +1,74 @@
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #f5f1e8 0%, #e4eef0 100%);
+}
+
+.login-panel {
+  width: min(100%, 27rem);
+  padding: 2.5rem;
+  background: #fffdf8;
+  border: 1px solid rgba(24, 57, 62, 0.12);
+  box-shadow: 0 1.5rem 3rem rgba(24, 57, 62, 0.14);
+}
+
+.brand-mark {
+  width: 3.25rem;
+  height: 3.25rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.25rem;
+  color: #fffdf8;
+  background: #e07a45;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.eyebrow {
+  margin-bottom: 0.35rem;
+  color: #e07a45;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  color: #18393e;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.2rem;
+}
+
+.intro,
+.account-note {
+  color: #607276;
+}
+
+.intro {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  color: #18393e;
+  font-weight: 600;
+}
+
+.form-control:focus {
+  border-color: #e07a45;
+  box-shadow: 0 0 0 0.2rem rgba(224, 122, 69, 0.2);
+}
+
+.btn-primary {
+  --bs-btn-bg: #18393e;
+  --bs-btn-border-color: #18393e;
+  --bs-btn-hover-bg: #28565d;
+  --bs-btn-hover-border-color: #28565d;
+}
+
+.account-note {
+  margin: 1.5rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}

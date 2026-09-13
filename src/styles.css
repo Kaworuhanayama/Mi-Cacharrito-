@@ -1,0 +1,15 @@
+:root {
+	font-family: 'Segoe UI', sans-serif;
+	color: #18393e;
+	background: #f5f1e8;
+}
+
+html,
+body {
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	min-width: 320px;
+}
