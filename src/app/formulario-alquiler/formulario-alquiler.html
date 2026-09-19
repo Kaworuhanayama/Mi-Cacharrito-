@@ -1,0 +1,34 @@
+<div class="contenedor-form">
+  <h2>Solicitar alquiler</h2>
+
+  <form *ngIf="!confirmado" (ngSubmit)="confirmarAlquiler()" #form="ngForm">
+    <label>Identificación</label>
+    <input type="text" [(ngModel)]="solicitud.identificacionUsuario" name="identificacion" required>
+
+    <label>Nombre completo</label>
+    <input type="text" [(ngModel)]="solicitud.nombreUsuario" name="nombre" required>
+
+    <label>Placa del vehículo</label>
+    <input type="text" [(ngModel)]="solicitud.placa" name="placa" placeholder="ej: ABC123" required>
+
+    <label>Fecha de inicio</label>
+    <input type="date" [(ngModel)]="solicitud.fechaInicio" name="fechaInicio" required>
+
+    <label>Fecha de entrega</label>
+    <input type="date" [(ngModel)]="solicitud.fechaEntrega" name="fechaEntrega" required>
+
+    <p class="mensaje-error" *ngIf="error">{{ error }}</p>
+
+    <button type="submit" [disabled]="enviando">
+      {{ enviando ? 'Procesando...' : 'Confirmar alquiler' }}
+    </button>
+  </form>
+
+  <div *ngIf="confirmado" class="confirmacion">
+    <h3>¡Alquiler confirmado!</h3>
+    <p>Número de alquiler: <strong>{{ numeroAlquiler }}</strong></p>
+
+    <button (click)="descargarPdf()">Descargar comprobante PDF</button>
+    <button class="btn-cancelar" (click)="cancelarAlquiler()">Cancelar alquiler</button>
+  </div>
+</div>

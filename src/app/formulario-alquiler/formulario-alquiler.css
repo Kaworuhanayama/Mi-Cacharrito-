@@ -1,0 +1,81 @@
+.contenedor-form {
+  max-width: 480px;
+  margin: 40px auto;
+  background-color: #120c1e;
+  border: 1px solid #2a1d3d;
+  border-radius: 14px;
+  padding: 32px;
+}
+
+h2 {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  color: #999;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 16px 0 6px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #0a0612;
+  border: 1px solid #2a1d3d;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #b026ff;
+}
+
+button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background: linear-gradient(90deg, #b026ff, #ff2ec4);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancelar {
+  background: transparent;
+  border: 1px solid #ff2ec4;
+  margin-top: 12px;
+}
+
+.mensaje-error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.confirmacion {
+  text-align: center;
+  color: #fff;
+}
+
+.confirmacion h3 {
+  color: #b026ff;
+}

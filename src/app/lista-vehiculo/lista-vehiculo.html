@@ -1,0 +1,29 @@
+<div class="contenedor">
+  <h2>Vehículos disponibles</h2>
+
+  <div *ngIf="cargando" class="mensaje-estado">Cargando vehículos...</div>
+  <div *ngIf="error" class="mensaje-estado error">No se pudo conectar con el servidor. Verifica que el backend esté corriendo.</div>
+
+  <div *ngIf="!cargando && !error">
+    <section class="seccion-carrusel" *ngFor="let tipo of tipos">
+      <h3>{{ tipo }}</h3>
+
+      <div class="carrusel" *ngIf="vehiculosPorTipo[tipo]?.length > 0">
+        <div class="tarjeta" *ngFor="let v of vehiculosPorTipo[tipo]">
+          <img [src]="imagenDe(v)" [alt]="v.placa" class="tarjeta-img">
+          <div class="tarjeta-info">
+            <h4>{{ v.placa }}</h4>
+            <p class="descripcion">{{ tipo }} color {{ v.color }}, disponible para alquiler diario.</p>
+            <div class="tarjeta-specs">
+              <span>{{ v.color }}</span>
+              <span>{{ v.valorAlquiler | currency:'COP':'symbol-narrow':'1.0-0' }}/día</span>
+            </div>
+            <span class="badge" [class.disponible]="v.estado === 'disponible'">{{ v.estado }}</span>
+          </div>
+        </div>
+      </div>
+
+      <p *ngIf="vehiculosPorTipo[tipo]?.length === 0" class="mensaje-estado">No hay {{ tipo }}s disponibles.</p>
+    </section>
+  </div>
+</div>

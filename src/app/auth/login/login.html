@@ -1,0 +1,27 @@
+<main class="login-shell">
+  <section class="login-intro" aria-labelledby="login-title">
+    <p class="eyebrow">MI CACHARRITO</p>
+    <h1 id="login-title">Elige tu acceso</h1>
+    <p>Ingresa al espacio que corresponde a tu rol para continuar.</p>
+  </section>
+
+  <section class="login-options" aria-label="Tipos de acceso">
+    <a routerLink="/login/usuario" class="login-option usuario-option">
+      <span class="option-mark" aria-hidden="true">U</span>
+      <span>
+        <strong>Login usuario</strong>
+        <small>Consulta vehículos y gestiona tus alquileres.</small>
+      </span>
+      <span class="option-arrow" aria-hidden="true">&#8594;</span>
+    </a>
+
+    <a routerLink="/login/administrador" class="login-option admin-option">
+      <span class="option-mark" aria-hidden="true">A</span>
+      <span>
+        <strong>Login administrador</strong>
+        <small>Administra vehículos, usuarios y solicitudes.</small>
+      </span>
+      <span class="option-arrow" aria-hidden="true">&#8594;</span>
+    </a>
+  </section>
+</main>

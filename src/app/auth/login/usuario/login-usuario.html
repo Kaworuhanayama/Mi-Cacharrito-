@@ -1,0 +1,20 @@
+<main class="login-page">
+  <section class="login-card" aria-labelledby="usuario-title">
+    <a routerLink="/login" class="back-link">&#8592; Cambiar tipo de acceso</a>
+    <p class="eyebrow">ACCESO USUARIO</p>
+    <h1 id="usuario-title">Bienvenido de nuevo</h1>
+    <p class="intro">Accede para consultar vehículos y gestionar tus alquileres.</p>
+
+    <form #usuarioForm="ngForm" (ngSubmit)="ingresar()" novalidate>
+      <label for="nombreUsuario">Nombre de usuario</label>
+      <input id="nombreUsuario" name="nombreUsuario" type="text" [(ngModel)]="nombreUsuario" required autocomplete="username" placeholder="Tu nombre de usuario">
+
+      <label for="contrasenaUsuario">Contraseña</label>
+      <input id="contrasenaUsuario" name="contrasena" type="password" [(ngModel)]="contrasena" required autocomplete="current-password" placeholder="Tu contraseña">
+
+      <p *ngIf="error" class="mensaje-error" role="alert">{{ error }}</p>
+      <p *ngIf="mostrarAcceso" class="mensaje-exito" role="status">{{ 'Inicio de sesión exitoso.' }}</p>
+      <button type="submit" [disabled]="usuarioForm.invalid || enviando">{{ enviando ? 'Ingresando...' : 'Ingresar como usuario' }}</button>
+    </form>
+  </section>
+</main>

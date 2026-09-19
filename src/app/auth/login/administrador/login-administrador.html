@@ -1,0 +1,20 @@
+<main class="login-page">
+  <section class="login-card" aria-labelledby="admin-title">
+    <a routerLink="/login" class="back-link">&#8592; Cambiar tipo de acceso</a>
+    <p class="eyebrow">PANEL ADMINISTRADOR</p>
+    <h1 id="admin-title">Acceso de gestión</h1>
+    <p class="intro">Ingresa con tus credenciales administrativas para continuar.</p>
+
+    <form #adminForm="ngForm" (ngSubmit)="ingresar()" novalidate>
+      <label for="identificacionAdministrador">Identificación</label>
+      <input id="identificacionAdministrador" name="identificacion" type="text" [(ngModel)]="identificacion" required autocomplete="username" placeholder="Tu identificación">
+
+      <label for="contrasenaAdministrador">Contraseña</label>
+      <input id="contrasenaAdministrador" name="contrasena" type="password" [(ngModel)]="contrasena" required autocomplete="current-password" placeholder="Tu contraseña">
+
+      <p *ngIf="error" class="mensaje-error" role="alert">{{ error }}</p>
+      <p *ngIf="mostrarAcceso" class="mensaje-exito" role="status">{{ 'Inicio de sesión exitoso.' }}</p>
+      <button type="submit" [disabled]="adminForm.invalid || enviando">{{ enviando ? 'Ingresando...' : 'Ingresar al panel' }}</button>
+    </form>
+  </section>
+</main>

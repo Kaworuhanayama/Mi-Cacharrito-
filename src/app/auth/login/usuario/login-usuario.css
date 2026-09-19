@@ -1,0 +1,113 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 79px);
+  background: radial-gradient(circle at 80% 20%, rgba(176, 38, 255, 0.15), transparent 32%), #0a0612;
+}
+
+.login-page {
+  display: grid;
+  min-height: calc(100vh - 79px);
+  place-items: center;
+  padding: 48px 20px;
+}
+
+.login-card {
+  width: min(100%, 460px);
+  padding: 40px;
+  background: #120c1e;
+  border: 1px solid #2a1d3d;
+  border-radius: 14px;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.3);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 42px;
+  color: #b026ff;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.back-link:hover { color: #ff2ec4; }
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #ff2ec4;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.intro {
+  margin: 0 0 30px;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+label {
+  display: block;
+  margin: 0 0 8px;
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 13px 14px;
+  color: #fff;
+  background: #0a0612;
+  border: 1px solid #2a1d3d;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus { border-color: #b026ff; box-shadow: 0 0 0 3px rgba(176, 38, 255, 0.16); }
+
+button {
+  width: 100%;
+  padding: 13px 18px;
+  color: #fff;
+  background: linear-gradient(90deg, #b026ff, #ff2ec4);
+  border: 0;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button:disabled { cursor: not-allowed; opacity: 0.45; }
+
+.mensaje-exito {
+  margin: 0 0 18px;
+  padding: 12px;
+  color: #baf7dc;
+  background: rgba(43, 194, 125, 0.12);
+  border: 1px solid rgba(43, 194, 125, 0.35);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.mensaje-error {
+  margin: 0 0 18px;
+  padding: 12px;
+  color: #ffb8c2;
+  background: rgba(255, 76, 105, 0.12);
+  border: 1px solid rgba(255, 76, 105, 0.35);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+@media (max-width: 500px) { .login-card { padding: 28px 22px; } }
