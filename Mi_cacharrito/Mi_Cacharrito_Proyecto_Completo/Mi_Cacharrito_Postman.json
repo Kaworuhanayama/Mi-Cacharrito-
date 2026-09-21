@@ -1,0 +1,237 @@
+{
+  "info": {
+    "_postman_id": "micacharrito-vehiculos-auth",
+    "name": "Mi Cacharrito - Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Vehículos",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar pendientes / alquilados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V/pendientes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V",
+                "pendientes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar disponibles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V/disponibles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V",
+                "disponibles"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por placa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V/placa/ABC123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V",
+                "placa",
+                "ABC123"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Entregar por placa",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V/entregar/ABC123",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V",
+                "entregar",
+                "ABC123"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por número de alquiler",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V/alquiler/1001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V",
+                "alquiler",
+                "1001"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Finalizar alquiler",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ListaVehiculos/V/finalizar/1001",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ListaVehiculos",
+                "V",
+                "finalizar",
+                "1001"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Autenticación",
+      "item": [
+        {
+          "name": "Login usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"identificacion\":\"1000000002\",\"password\":\"usuario123\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/autenticacion/login/usuario",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "autenticacion",
+                "login",
+                "usuario"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Login administrador",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"identificacion\":\"1000000001\",\"password\":\"admin123\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/autenticacion/login/administrador",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "autenticacion",
+                "login",
+                "administrador"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Registro usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"identificacion\":\"1000000099\",\"nombreCompleto\":\"Usuario Prueba\",\"fechaExpedicionLicencia\":\"2026-01-15\",\"categoria\":\"B1\",\"vigencia\":\"2028-01-15\",\"correoElectronico\":\"prueba@micacharrito.com\",\"numeroTelefono\":\"3000000099\",\"password\":\"123456\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/autenticacion/registro",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "autenticacion",
+                "registro"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
