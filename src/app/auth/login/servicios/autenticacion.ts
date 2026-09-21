@@ -7,6 +7,17 @@ export interface SolicitudLogin {
   password: string;
 }
 
+export interface SolicitudRegistroUsuario {
+  identificacion: string;
+  nombreCompleto: string;
+  fechaExpedicionLicencia: string;
+  categoria: string;
+  vigencia: string;
+  correoElectronico: string;
+  numeroTelefono: string;
+  password: string;
+}
+
 export interface RespuestaAutenticacion {
   mensaje: string;
   idUsuario: number;
@@ -26,5 +37,9 @@ export class Autenticacion {
 
   ingresarAdministrador(solicitud: SolicitudLogin): Observable<RespuestaAutenticacion> {
     return this.http.post<RespuestaAutenticacion>(`${this.baseUrl}/login/administrador`, solicitud);
+  }
+
+  registrarUsuario(solicitud: SolicitudRegistroUsuario): Observable<RespuestaAutenticacion> {
+    return this.http.post<RespuestaAutenticacion>(`${this.baseUrl}/registro`, solicitud);
   }
 }

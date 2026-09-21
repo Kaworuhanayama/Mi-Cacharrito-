@@ -16,5 +16,7 @@
       <p *ngIf="mostrarAcceso" class="mensaje-exito" role="status">{{ 'Inicio de sesión exitoso.' }}</p>
       <button type="submit" [disabled]="usuarioForm.invalid || enviando">{{ enviando ? 'Ingresando...' : 'Ingresar como usuario' }}</button>
     </form>
+
+    <p class="registro-link">¿Aún no tienes cuenta? <a routerLink="/registro">Regístrate aquí</a></p>
   </section>
 </main>

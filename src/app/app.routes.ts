@@ -4,6 +4,7 @@ import { FormularioAlquiler } from './formulario-alquiler/formulario-alquiler';
 import { Login } from './auth/login/login';
 import { LoginUsuario } from './auth/login/usuario/login-usuario';
 import { LoginAdministrador } from './auth/login/administrador/login-administrador';
+import { RegistroUsuario } from './auth/registro/registro-usuario';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -12,4 +13,5 @@ export const routes: Routes = [
     {path: 'login', component: Login},
     {path: 'login/usuario', component: LoginUsuario},
     {path: 'login/administrador', component: LoginAdministrador},
+    {path: 'registro', component: RegistroUsuario},
 ];
