@@ -1,0 +1,35 @@
+package com.example.demo.controller;
+
+import com.example.demo.model.Vehiculo;
+import com.example.demo.repository.VehiculoRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/vehiculos")
+public class VehiculoController {
+
+    private final VehiculoRepository repo;
+
+    public VehiculoController(VehiculoRepository repo) {
+        this.repo = repo;
+    }
+
+    // 1. Listar vehículos alquilados no entregados
+    @GetMapping("/pendientes")
+    public List<Vehiculo> listarPendientes() {
+        return repo.findByEstado("pendiente");
+    }
+
+    // 2. Buscar por placa y cambiar estado a "entregado"
+    @PutMapping("/entregar/{placa}")
+    public Vehiculo entregarVehiculo(@PathVariable String placa) {
+        Vehiculo v = repo.findByPlaca(placa);
+        if (v != null && v.getEstado().equals("pendiente")) {
+            v.setEstado("entregado");
+            return repo.save(v);
+        }
+        return null;
+    }
+}
