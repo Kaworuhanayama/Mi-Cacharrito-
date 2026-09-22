@@ -1,0 +1,13 @@
+<div class="contenedor-form">
+  <h2>Cancelar alquiler</h2>
+
+  <label>Número de alquiler</label>
+  <input type="number" [(ngModel)]="numeroAlquiler" name="numeroAlquiler" placeholder="ej: 3">
+
+  <p class="mensaje-error" *ngIf="error">{{ error }}</p>
+  <p class="mensaje-exito" *ngIf="mensaje">{{ mensaje }}</p>
+
+  <button (click)="cancelar()" [disabled]="procesando">
+    {{ procesando ? 'Procesando...' : 'Cancelar alquiler' }}
+  </button>
+</div>
