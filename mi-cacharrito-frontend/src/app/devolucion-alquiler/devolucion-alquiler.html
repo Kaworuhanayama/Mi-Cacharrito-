@@ -1,0 +1,52 @@
+<div class="contenedor-form">
+  <h2>Devolución de Vehículo</h2>
+
+  <!-- Formulario de Búsqueda -->
+  <div>
+    <label for="tipoBusqueda">Buscar Por</label>
+    <select id="tipoBusqueda" [(ngModel)]="tipoBusqueda">
+      <option value="numero">Número de Alquiler</option>
+      <option value="placa">Placa del Vehículo</option>
+    </select>
+
+    <label for="valorBusqueda">Valor a Buscar</label>
+    <input 
+      id="valorBusqueda" 
+      type="text" 
+      [(ngModel)]="valorBusqueda" 
+      placeholder="Ingrese el número o la placa..."
+    >
+
+    <button (click)="buscar()" [disabled]="cargando">
+      {{ cargando ? 'BUSCANDO...' : 'BUSCAR ALQUILER' }}
+    </button>
+  </div>
+
+  <!-- Mensaje de Error -->
+  <p *ngIf="error" class="mensaje-error">{{ error }}</p>
+
+  <!-- Detalle del Alquiler Encontrado -->
+  <div *ngIf="alquilerEncontrado" class="tarjeta-detalle">
+    <h3>Información</h3>
+    <p><strong>N° Alquiler:</strong> {{ alquilerEncontrado.numeroAlquiler }}</p>
+    <p><strong>Cliente:</strong> {{ alquilerEncontrado.nombreUsuario }}</p>
+    <p><strong>Placa:</strong> {{ alquilerEncontrado.placa }}</p>
+    <p><strong>Vehículo:</strong> {{ alquilerEncontrado.tipoVehiculo }}</p>
+    <p><strong>Fecha Pactada:</strong> {{ alquilerEncontrado.fechaEntrega }}</p>
+    <p><strong>Estado:</strong> <span class="badge-estado">{{ alquilerEncontrado.estado }}</span></p>
+
+    <button (click)="registrarDevolucion(alquilerEncontrado.numeroAlquiler)" [disabled]="cargando">
+      PROCESAR DEVOLUCIÓN
+    </button>
+  </div>
+
+  <!-- Resultado y Cobro Extra -->
+  <div *ngIf="resultadoDevolucion" class="tarjeta-detalle">
+    <p class="mensaje-exito">{{ mensajeExito }}</p>
+    <p><strong>Días de mora:</strong> {{ resultadoDevolucion.diasExtra }} día(s)</p>
+    <p><strong>Recargo extra:</strong> ${{ resultadoDevolucion.cobroExtra }}</p>
+    <p style="font-size: 16px; margin-top: 12px;">
+      <strong>Total a Pagar:</strong> ${{ resultadoDevolucion.totalPagar }}
+    </p>
+  </div>
+</div>

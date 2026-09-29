@@ -1,0 +1,62 @@
+<main class="login-page">
+  <!-- FORMULARIO DE LOGIN (Se muestra mientras no haya accedido) -->
+  <section *ngIf="!mostrarAcceso" class="login-card" aria-labelledby="admin-title">
+    <a routerLink="/login" class="back-link">&#8592; Cambiar tipo de acceso</a>
+    <p class="eyebrow">PANEL ADMINISTRADOR</p>
+    <h1 id="admin-title">Acceso de gestión</h1>
+    <p class="intro">Ingresa con tus credenciales administrativas para continuar.</p>
+
+    <form #adminForm="ngForm" (ngSubmit)="ingresar()" novalidate>
+      <label for="identificacionAdministrador">Identificación</label>
+      <input id="identificacionAdministrador" name="identificacion" type="text" [(ngModel)]="identificacion" required autocomplete="username" placeholder="Tu identificación">
+
+      <label for="contrasenaAdministrador">Contraseña</label>
+      <input id="contrasenaAdministrador" name="contrasena" type="password" [(ngModel)]="contrasena" required autocomplete="current-password" placeholder="Tu contraseña">
+
+      <p *ngIf="error" class="mensaje-error" role="alert">{{ error }}</p>
+      <button type="submit" [disabled]="adminForm.invalid || enviando">{{ enviando ? 'Ingresando...' : 'Ingresar al panel' }}</button>
+    </form>
+  </section>
+
+  <!-- PANEL DE ADMINISTRACIÓN (Se activa cuando mostrarAcceso = true) -->
+  <section *ngIf="mostrarAcceso" class="contenedor-tabla mt-4">
+    <h2>Panel Administrador</h2>
+    <p class="subtitulo">Listado de vehículos con alquileres pendientes de entrega</p>
+
+    <div *ngIf="cargandoNoEntregados" class="mensaje-info">Cargando registros...</div>
+    <div *ngIf="errorNoEntregados" class="mensaje-error">{{ errorNoEntregados }}</div>
+
+    <div *ngIf="!cargandoNoEntregados && !errorNoEntregados && listaNoEntregados.length === 0" class="mensaje-info">
+      No hay vehículos pendientes de entrega actualmente.
+    </div>
+
+    <div class="tabla-responsive" *ngIf="!cargandoNoEntregados && listaNoEntregados.length > 0">
+      <table class="tabla-custom">
+        <thead>
+          <tr>
+            <th>N° Alquiler</th>
+            <th>Cliente</th>
+            <th>Identificación</th>
+            <th>Placa</th>
+            <th>Vehículo</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Entrega</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listaNoEntregados">
+            <td><strong>#{{ item.numeroAlquiler }}</strong></td>
+            <td>{{ item.nombreUsuario }}</td>
+            <td>{{ item.identificacionUsuario }}</td>
+            <td class="placa-highlight">{{ item.placa }}</td>
+            <td>{{ item.tipoVehiculo }}</td>
+            <td>{{ item.fechaInicio }}</td>
+            <td>{{ item.fechaEntrega }}</td>
+            <td><span class="badge-estado">{{ item.estado }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
