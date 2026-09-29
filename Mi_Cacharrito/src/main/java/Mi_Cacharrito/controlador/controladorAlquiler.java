@@ -44,9 +44,6 @@ public class controladorAlquiler {
         public String fechaEntrega;  
     }
 
-    // -------------------------------------------------------------------------
-    // MÉTODOS ORIGINALES (Mantenidos intactos para el PDF y creación)
-    // -------------------------------------------------------------------------
 
     @PostMapping("/crear")
     public ResponseEntity<?> crearAlquiler(@RequestBody SolicitudAlquiler solicitud) {
@@ -108,11 +105,8 @@ public class controladorAlquiler {
         }).orElse(ResponseEntity.notFound().build());
     }
 
-    // -------------------------------------------------------------------------
-    // MÉTODOS NUEVOS (Tus tarjetas asignadas)
-    // -------------------------------------------------------------------------
 
-    // Tarjeta: Vista de búsqueda por placa/número de alquiler[cite: 1]
+    //  búsqueda por placa/número de alquiler
     @GetMapping("/buscar")
     public ResponseEntity<?> buscarAlquiler(@RequestParam String tipo, @RequestParam String valor) {
         Optional<Alquiler> alquilerOpt = Optional.empty();
@@ -140,7 +134,7 @@ public class controladorAlquiler {
         }
     }
 
-    // Tarjeta: Búsqueda por número de alquiler + cambio a 'disponible' + cálculo de cobro días extra[cite: 1]
+    //  Búsqueda por número de alquiler + cambio a 'disponible' + cálculo de cobro días extra
     @PostMapping("/devolucion/{numeroAlquiler}")
     public ResponseEntity<?> procesarDevolucion(@PathVariable Long numeroAlquiler) {
         Optional<Alquiler> alquilerOpt = alquilerRepository.findById(numeroAlquiler);
@@ -182,15 +176,12 @@ public class controladorAlquiler {
         return ResponseEntity.ok(respuesta);
     }
 
-    // Tarjeta: Vista de listado de vehículos no entregados (panel admin)[cite: 1]
+    // listado de vehículos no entregados 
     @GetMapping("/no-entregados")
     public List<Alquiler> listarNoEntregados() {
         return alquilerRepository.findByEstado("pendiente de entrega");
     }
 
-    // -------------------------------------------------------------------------
-    // LÓGICA DE PDF INTANTA
-    // -------------------------------------------------------------------------
 
     private byte[] generarPdfAlquiler(Alquiler alquiler) throws Exception {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -236,6 +227,16 @@ public class controladorAlquiler {
             documento.save(salida);
             return salida.toByteArray();
         }
+    }
+    
+    //cambiar el estado a entregado en el backend
+    @PutMapping("/entregar/{numeroAlquiler}")
+    public ResponseEntity<?> marcarEntregado(@PathVariable Long numeroAlquiler) {
+        return alquilerRepository.findById(numeroAlquiler).map(alquiler -> {
+            alquiler.setEstado("entregado");
+            alquilerRepository.save(alquiler);
+            return ResponseEntity.ok("Vehículo marcado como entregado.");
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/pdf/{numeroAlquiler}")
