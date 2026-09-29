@@ -1,9 +1,0 @@
-**/target/
-**/node_modules/
-**/dist/
-.classpath
-.project
-.settings/
-.vscode/
-*.log
-.DS_Store
