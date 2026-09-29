@@ -1,7 +1,6 @@
 <div class="contenedor-form">
   <h2>Devolución de Vehículo</h2>
 
-  <!-- Formulario de Búsqueda -->
   <div>
     <label for="tipoBusqueda">Buscar Por</label>
     <select id="tipoBusqueda" [(ngModel)]="tipoBusqueda">
@@ -22,10 +21,9 @@
     </button>
   </div>
 
-  <!-- Mensaje de Error -->
   <p *ngIf="error" class="mensaje-error">{{ error }}</p>
 
-  <!-- Detalle del Alquiler Encontrado -->
+  
   <div *ngIf="alquilerEncontrado" class="tarjeta-detalle">
     <h3>Información</h3>
     <p><strong>N° Alquiler:</strong> {{ alquilerEncontrado.numeroAlquiler }}</p>
@@ -40,7 +38,6 @@
     </button>
   </div>
 
-  <!-- Resultado y Cobro Extra -->
   <div *ngIf="resultadoDevolucion" class="tarjeta-detalle">
     <p class="mensaje-exito">{{ mensajeExito }}</p>
     <p><strong>Días de mora:</strong> {{ resultadoDevolucion.diasExtra }} día(s)</p>
